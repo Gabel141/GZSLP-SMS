@@ -3,6 +3,21 @@
 include("../../config.php");
 include("../../crud.php");
 
+$account = new Accounts($conn);
+
+if (isset($_POST['submit'])) {
+    $lname = $_POST['lname'];
+    $fname = $_POST['fname'];
+    $salary = $_POST['salary'];
+    $role = $_POST['role'];
+    $email = $_POST['email'];
+    $number = $_POST['number'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $account->addAccount($lname, $fname, $salary, $role, $email, $number, $username, $password);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -15,14 +30,17 @@ include("../../crud.php");
 </head>
 <body>
 
-<?php include('../mnavbar.php'); ?>
+<?php include('mnavbar.php'); ?>
     <center>
         <h1>Accounts</h1>
         <h2><button onclick="location.href='../accounts.php'">Back</button></h2>
     </center>
 
-<form>
-    <table method="POST" style="margin: auto;">
+<form method="POST">
+    <table style="margin: auto;">
+        <tr>
+            <th colspan="2" style="padding-top: 5%; padding-bottom: 5%">Personal Details</th>
+        </tr>
         <tr>
             <td>Last Name</td>
             <td><input type="text" name="lname" required></td>
@@ -37,7 +55,17 @@ include("../../crud.php");
         </tr>
         <tr>
             <td>Role</td>
-            <td><input type="text" name="role" required></td>
+            <td><select name="role">
+                <option value="Employee">
+                    Employee
+                </option>
+                <option value="Manager">
+                    Manager
+                </option>
+                <option value="Executive">
+                    Executive
+                </option>
+            </select></td>
         </tr>
         <tr>
             <td>Email</td>
@@ -48,20 +76,7 @@ include("../../crud.php");
             <td><input type="text" name="number" required></td>
         </tr>
         <tr>
-            <td>Building</td>
-            <td><input type="text" name="building" required></td>
-        </tr>
-        <tr>
-            <td>Street</td>
-            <td><input type="text" name="street" required></td>
-        </tr>
-        <tr>
-            <td>Province</td>
-            <td><input type="text" name="province" required></td>
-        </tr>
-        <tr>
-            <td>Country</td>
-            <td><input type="text" name="country" required></td>
+            <th colspan="2" style="padding-top: 5%; padding-bottom: 5%">Account Credentials</th>
         </tr>
         <tr>
             <td>Username</td>
@@ -69,7 +84,7 @@ include("../../crud.php");
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="text" name="password" required></td>
+            <td><input type="password" name="password" required></td>
         </tr>
         <tr>
             <td colspan="2"><button name="submit" style="width: 100%">Submit</button></td>

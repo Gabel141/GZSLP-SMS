@@ -11,7 +11,7 @@ include("../crud.php");
     <link rel="stylesheet" href="../table.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customers</title>
+    <title>Suppliers</title>
     <style>
         th {
             color: white;
@@ -25,35 +25,33 @@ include("../crud.php");
 <?php include('mnavbar.php'); ?>
 
 <center>
-    <h1>Customers</h1>
-    <h2><button class="btn-1" onclick="location.href='forms/addcustomer.php'">Add Customer</button></h2>
+    <h1>Suppliers</h1>
+    <h2><button class="btn-1" onclick="location.href='forms/addSupplier.php'">Add Suppliers</button></h2>
 </center>    
 
 <table class="list" style="width: 100%; text-align: center;">
     <tr>
-        <th>Customer Id</th>
-        <th>Last Name</th>
-        <th>First Name</th>
+        <th>Supplier ID</th>
+        <th>Name</th>
         <th>Email</th>
         <th>Phone Number</th>
         <th colspan="2">Actions</th>
     </tr>
     <?php
     
-        $read = "SELECT * FROM customer_details";
+        $read = "SELECT * FROM supplier_details";
         $read = mysqli_query($conn, $read);
 
         while ($row = mysqli_fetch_assoc($read)) {
         
         ?>
         <tr>
-            <td><?php echo $row['customerID'] ?></td>
-            <td><?php echo $row['lastName'] ?></td>
-            <td><?php echo $row['firstName'] ?></td>
+            <td><?php echo $row['supplierID'] ?></td>
+            <td><?php echo $row['supplierName'] ?></td>
             <td><?php echo $row['email'] ?></td>
             <td><?php echo $row['contactNo'] ?></td>
-            <td><a href="forms/editCustomer.php?customerID=<?php echo $row['customerID'] ?>">Edit</a></td>
-            <td><a href="forms/deletecustomer.php?customerID=<?php echo $row['customerID'] ?>">Delete</a></td>
+            <td><a href="forms/editSupplier.php?supplierID=<?php echo $row['supplierID'] ?>">Edit</a></td>
+            <td><a href="forms/deleteSupplier.php?supplierID=<?php echo $row['supplierID'] ?>">Delete</a></td>
         </tr>
         
     
