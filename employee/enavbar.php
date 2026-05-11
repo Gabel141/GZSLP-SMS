@@ -8,12 +8,38 @@
 <body>
     
     <nav class="navigation">
-        <div class="nonnav"><a href="edash.php"><div class="nav">Home</div></a></div>
-        <div class="nonnav"><a href="transactions.php"><div class="nav">Transactions</div></a></div>
-        <div class="nonnav"><a href="inventory.php"><div class="nav">Inventory</div></a></div>
-        <div class="nonnav"><a href="customers.php"><div class="nav">Customers</div></a></div>
+        <button class="sidebar-toggle" id="sidebarToggle">☰ Menu</button>
+        <div class="menu-bar">
+
+        </div>
         <div class="nonnav" style="margin-left: auto;"><a href="../index.php"><div class="nav">Logout</div></a></div>
     </nav>
 
+    <div class="sidebar" id="sidebar">
+        <a href="edash.php">Home</a>
+        <a href="transactions.php">Transactions</a>
+        <a href="inventory.php">Inventory</a>
+        <a href="customers.php">Customers</a>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const toggle = document.getElementById('sidebarToggle');
+
+        function openSidebar() {
+            sidebar.classList.add('sidebar-open');
+            overlay.classList.add('overlay-visible');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('sidebar-open');
+            overlay.classList.remove('overlay-visible');
+        }
+
+        toggle.addEventListener('click', openSidebar);
+        overlay.addEventListener('click', closeSidebar);
+    </script>
 </body>
 </html>

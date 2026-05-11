@@ -19,7 +19,7 @@ include("../crud.php");
 
 <center>
     <h1>Inventory</h1>
-    <h2><button onclick="location.href='forms/addaccount.php'">Add Account</button></h2>
+    <h2><button class="btn" onclick="location.href='forms/addaccount.php'">Add Account</button></h2>
 </center>    
 
 <table class="list">
