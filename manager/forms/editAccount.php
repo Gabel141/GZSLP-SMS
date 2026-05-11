@@ -9,7 +9,7 @@ $aID = $_GET['accountID'];
 $eID = $_GET['employeeID'];
 $user = $_GET['username'];
 
-$read = "SELECT ed.employeeID, a.accountID, ed.lastName, ed.firstName, ed.salary, ed.role, ed.email, ed.contactNo, a.username FROM employee_details as ed JOIN emplacc as ea ON ed.employeeID = ea.employeeID JOIN accounts as a ON ea.accountID = a.accountID WHERE ed.employeeID = $eID";
+$read = "SELECT ed.employeeID, a.accountID, ed.lastName, ed.firstName, ed.salary, ed.role, ed.email, ed.contactNo, a.username, a.password FROM employee_details as ed JOIN emplacc as ea ON ed.employeeID = ea.employeeID JOIN accounts as a ON ea.accountID = a.accountID WHERE ed.employeeID = $eID";
 $read = mysqli_query($conn, $read);
 
 $fetch = mysqli_fetch_assoc($read);
@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
 
         <?php
         }
-        else if ($fetch['role' == "Executive"]) {
+        else if ($fetch['role'] == "Executive") {
             ?>
             
         <tr>
@@ -145,7 +145,7 @@ if (isset($_POST['submit'])) {
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="password" name="password" required></td>
+            <td><input type="password" name="password" required value="<?php echo $fetch['password'] ?>"></td>
         </tr>
         <tr>
             <td colspan="2"><button name="submit" style="width: 100%">Submit</button></td>
