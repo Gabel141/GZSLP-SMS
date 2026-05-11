@@ -44,7 +44,7 @@ body {
     left: -260px;
     width: 250px;
     height: 100%;
-    background-color: #1f2937;
+    background-color: #0a75da66;
     color: white;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ body {
 }
 
 .sidebar a:hover {
-    background-color: #374151;
+    background-color: rgba(173, 216, 230, 0.766);
 }
 
 .sidebar-open {
